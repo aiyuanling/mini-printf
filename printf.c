@@ -352,7 +352,7 @@ int out_vsprintf(int out_max, char (*fun)(char) ,char *str, const char *format, 
 	            		(buf.str)[0]=false;(buf.str)[1]=true;(buf.str)[2]=10;
 	            		GOTO_case_I: ;
 	            		buf.i= printf_number(0,(buf.str)[0],(buf.str)[1],
-	            								(buf.str)[2],out_max,
+	            								(buf.str)[2],(out_max - ret),
 	            								( flag==1?va_arg(arg, unsigned long):va_arg(arg, int)),str,
 	            								fun);
 	            		flag=0;
@@ -385,7 +385,7 @@ int out_vsprintf(int out_max, char (*fun)(char) ,char *str, const char *format, 
 	            	case 'P':;
 	            	case 'p':{
 	            		buf.i= printf_number(1,0,0,
-	            								16,out_max,
+	            								16,(out_max - ret),
 	            								(unsigned long)va_arg(arg, void*),str,
 	            								fun);
 	            	};goto GOTO_case_I_next;   
